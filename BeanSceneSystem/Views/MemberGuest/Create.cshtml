@@ -1,0 +1,41 @@
+﻿@model MemberGuest
+
+<h1>Member/Guest</h1>
+<form method="post" enctype="multipart/form-data" asp-action="Create">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h1 class="text-primary">Create Member/Guest</h1>
+        </div>
+        <div class="mb-2">
+           @* <div asp-validation-summary="All" class="text-danger"></div>*@
+            <label>First Name</label>
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="mb3">x
+            <label>Last Name</label>
+            <input asp-for="LastName" class="form-control"/>
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <div class="mb3">
+            <label>Email</label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="mb3">
+            <label>Phone Number</label>
+            <input asp-for="PhoneNo" class="form-control" />
+            <span asp-validation-for="PhoneNo" class="text-danger"></span>
+        </div>
+        <div class="mb3">
+            <label>Type</label>
+            <input asp-for="Type" class="form-control" />
+            <span asp-validation-for="Type" class="text-danger"></span>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <button type="submit" class="btn btn-primary">Create</button>
+        <a asp-controller="MemberGuest" asp-action="Index" class="btn btn-primary">Back To List</a>
+    </div>
+</form>

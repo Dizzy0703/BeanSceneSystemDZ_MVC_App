@@ -1,0 +1,100 @@
+﻿@model IEnumerable<BeanSceneSystem.Models.Reservation>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container p-3">
+    <div>
+        <h2 class="text-primary">List of All Reservations</h2>
+    </div>
+    <div class="col-6 align-items-end">
+        @if (User.IsInRole("admin"))
+        {
+            <a asp-controller="Reservation" asp-action="Create" class="btn btn-primary" width="20%"><i class="bi bi-plus-circle-fill"></i>&nbsp;Add New Reservation</a>
+        }
+    </div>
+</div>
+<br/>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Area)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sitting)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TableNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumOfGuests)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Source)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notes)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Area)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sitting)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TableNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumOfGuests)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Duration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Source)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Notes)
+                </td>
+
+                <td>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <a asp-controller="Reservation" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary mx-3">Edit</a>
+                        <a asp-controller="Reservation" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-primary mx-3">Delete</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
